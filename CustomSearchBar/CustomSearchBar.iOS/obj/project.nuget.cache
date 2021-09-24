@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "OPXCxK8muAvGrzkNu3PEzG+560AsJtYFHE0A9pL6zwW45YJHoBmCxmbVK0yPcplDiksk1WNWTYUF4GE4G0wSoA==",
+  "dgSpecHash": "5okTRpT20r+X3TNTap1C6BItldUZ8PS5rh1ZnCLvkefPWPE2uOIjPhpRINAQb3po4lL8TtvpK6LsmzVjEGTFGg==",
   "success": true,
   "projectFilePath": "F:\\_Projects\\SmallProjectXamarin\\CustomSearchBar\\CustomSearchBar\\CustomSearchBar.iOS\\CustomSearchBar.iOS.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Mohamed Fawzy\\.nuget\\packages\\system.componentmodel\\4.3.0\\system.componentmodel.4.3.0.nupkg.sha512",
     "C:\\Users\\Mohamed Fawzy\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\Mohamed Fawzy\\.nuget\\packages\\xamarin.essentials\\1.6.1\\xamarin.essentials.1.6.1.nupkg.sha512",
-    "C:\\Users\\Mohamed Fawzy\\.nuget\\packages\\xamarin.forms\\5.0.0.2125\\xamarin.forms.5.0.0.2125.nupkg.sha512"
+    "C:\\Users\\Mohamed Fawzy\\.nuget\\packages\\xamarin.forms\\5.0.0.2125\\xamarin.forms.5.0.0.2125.nupkg.sha512",
+    "C:\\Users\\Mohamed Fawzy\\.nuget\\packages\\xamarin.forms.pancakeview\\2.3.0.759\\xamarin.forms.pancakeview.2.3.0.759.nupkg.sha512"
   ],
   "logs": []
 }

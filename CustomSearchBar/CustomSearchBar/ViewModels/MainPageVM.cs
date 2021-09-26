@@ -1,4 +1,5 @@
-﻿using CustomSearchBar.Services;
+﻿using CustomSearchBar.Fonts;
+using CustomSearchBar.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -29,20 +30,50 @@ namespace CustomSearchBar.ViewModels
                 OnPropertyChanged(nameof(EntrySearch));
             }
         }
+        private bool visibleEmptySearch = false;
+        public bool VisibleEmptySearch
+        {
+            get => visibleEmptySearch;
+            set { SetProperty(ref visibleEmptySearch, value); }
+        }
+        public Entry ReceivesEntry = new Entry();
         public ObservableCollection<string> ListRecentSearch { get; set; }
 
         public ICommand ExitSearchCommand => new Command(ExecuteExitSearchCommand);
-        public ICommand EraseEntrySearshCommand => new Command(ExecuteEraseEntrySearsh);
+        public ICommand EraseEntrySearshCommand => new Command(EraseEntrySearch);
         public ICommand CancelImage_RecentSearch_Command => new Command<string>(ExecuteCancelImage_RecentSearch_Command);
+        public ICommand MenuIcon_Command => new Command(EMenuIcon_Command);
+
+        private async void EMenuIcon_Command(object sender)
+        {
+            var label = sender as Xamarin.Forms.Label;
+            await label.RotateTo(180);
+            if (label.Text == IconFont.Close)
+            {
+                MainContentVisible = true;
+                label.Text = IconFont.ViewHeadline;
+                ReceivesEntry.Unfocus();
+                EraseEntrySearch();
+            }
+            else
+            {
+                // run SideMenuView
+            }
+            label.Rotation = 0;
+        }
 
         public MainPageVM()
         {
             ListRecentSearch = new ObservableCollection<string>();
-            AddItemListRecentSearch(SearchDataStore.GetItemsAsync());
+            AddResultsInTheRecentSearchList(SearchDataStore.GetItems());
+        }
+        public void AddWordForRecentSearchList(string item)
+        {
+            SearchDataStore.SetItem(item);
+            RefreshList();
         }
 
-
-        private void ExecuteEraseEntrySearsh()
+        private void EraseEntrySearch()
         {
             EntrySearch = "";
         }
@@ -53,10 +84,14 @@ namespace CustomSearchBar.ViewModels
         }
         private void getReseltFromSearch(string search)
         {
-            var filteredResult = SearchDataStore.GetItemsAsync().Where(s => s.Contains(search));
-            AddItemListRecentSearch(filteredResult);
+            var ListOfResult = SearchDataStore.GetItems().Where(s => s.Contains(search)).OrderBy((x) => x);
+            if (ListOfResult.Count() < 1)
+                VisibleEmptySearch = true;
+            else
+                VisibleEmptySearch = false;
+            AddResultsInTheRecentSearchList(ListOfResult);
         }
-        private void AddItemListRecentSearch(IEnumerable<string> list)
+        private void AddResultsInTheRecentSearchList(IEnumerable<string> list)
         {
             ListRecentSearch.Clear();
             foreach (var item in list)
@@ -70,6 +105,17 @@ namespace CustomSearchBar.ViewModels
             ListRecentSearch.Remove(item);
         }
 
+        private void RefreshList()
+        {
+            ListRecentSearch.Clear();
+            // get items froms Repository
+            var ListOfResult = SearchDataStore.GetItems().OrderBy((x) => x);
+            //add item for List
+            foreach (var item in ListOfResult)
+            {
+                ListRecentSearch.Add(item);
+            }
+        }
 
     }
 }

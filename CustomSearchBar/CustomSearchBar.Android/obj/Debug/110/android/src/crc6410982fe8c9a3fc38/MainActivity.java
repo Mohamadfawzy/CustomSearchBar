@@ -12,6 +12,8 @@ public class MainActivity
 		__md_methods = 
 			"n_onCreate:(Landroid/os/Bundle;)V:GetOnCreate_Landroid_os_Bundle_Handler\n" +
 			"n_onRequestPermissionsResult:(I[Ljava/lang/String;[I)V:GetOnRequestPermissionsResult_IarrayLjava_lang_String_arrayIHandler\n" +
+			"n_dispatchTouchEvent:(Landroid/view/MotionEvent;)Z:GetDispatchTouchEvent_Landroid_view_MotionEvent_Handler\n" +
+			"n_getCurrentFocus:()Landroid/view/View;:GetGetCurrentFocusHandler\n" +
 			"";
 		mono.android.Runtime.register ("CustomSearchBar.Droid.MainActivity, CustomSearchBar.Android", MainActivity.class, __md_methods);
 	}
@@ -47,6 +49,22 @@ public class MainActivity
 	}
 
 	private native void n_onRequestPermissionsResult (int p0, java.lang.String[] p1, int[] p2);
+
+
+	public boolean dispatchTouchEvent (android.view.MotionEvent p0)
+	{
+		return n_dispatchTouchEvent (p0);
+	}
+
+	private native boolean n_dispatchTouchEvent (android.view.MotionEvent p0);
+
+
+	public android.view.View getCurrentFocus ()
+	{
+		return n_getCurrentFocus ();
+	}
+
+	private native android.view.View n_getCurrentFocus ();
 
 	private java.util.ArrayList refList;
 	public void monodroidAddReference (java.lang.Object obj)

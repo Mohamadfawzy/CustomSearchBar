@@ -2,7 +2,6 @@ F:\_Projects\SmallProjectXamarin\CustomSearchBar\CustomSearchBar\CustomSearchBar
 F:\_Projects\SmallProjectXamarin\CustomSearchBar\CustomSearchBar\CustomSearchBar\bin\Debug\netstandard2.0\CustomSearchBar.dll
 F:\_Projects\SmallProjectXamarin\CustomSearchBar\CustomSearchBar\CustomSearchBar\bin\Debug\netstandard2.0\ref\CustomSearchBar.dll
 F:\_Projects\SmallProjectXamarin\CustomSearchBar\CustomSearchBar\CustomSearchBar\bin\Debug\netstandard2.0\CustomSearchBar.pdb
-F:\_Projects\SmallProjectXamarin\CustomSearchBar\CustomSearchBar\CustomSearchBar\obj\Debug\netstandard2.0\CustomSearchBar.csproj.AssemblyReference.cache
 F:\_Projects\SmallProjectXamarin\CustomSearchBar\CustomSearchBar\CustomSearchBar\obj\Debug\netstandard2.0\App.xaml.g.cs
 F:\_Projects\SmallProjectXamarin\CustomSearchBar\CustomSearchBar\CustomSearchBar\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
 F:\_Projects\SmallProjectXamarin\CustomSearchBar\CustomSearchBar\CustomSearchBar\obj\Debug\netstandard2.0\CustomSearchBar.AssemblyInfoInputs.cache
@@ -12,3 +11,4 @@ F:\_Projects\SmallProjectXamarin\CustomSearchBar\CustomSearchBar\CustomSearchBar
 F:\_Projects\SmallProjectXamarin\CustomSearchBar\CustomSearchBar\CustomSearchBar\obj\Debug\netstandard2.0\CustomSearchBar.dll
 F:\_Projects\SmallProjectXamarin\CustomSearchBar\CustomSearchBar\CustomSearchBar\obj\Debug\netstandard2.0\ref\CustomSearchBar.dll
 F:\_Projects\SmallProjectXamarin\CustomSearchBar\CustomSearchBar\CustomSearchBar\obj\Debug\netstandard2.0\CustomSearchBar.pdb
+F:\_Projects\SmallProjectXamarin\CustomSearchBar\CustomSearchBar\CustomSearchBar\obj\Debug\netstandard2.0\CustomSearchBar.csproj.AssemblyReference.cache

@@ -1,4 +1,5 @@
-﻿using CustomSearchBar.ViewModels;
+﻿using CustomSearchBar.Fonts;
+using CustomSearchBar.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,30 +21,32 @@ namespace CustomSearchBar
         private void SearchBox_focused(object sender, FocusEventArgs e)
         {
             vm.MainContentVisible = false;
+            MenuIcon.Text = IconFont.Close;
+            vm.ReceivesEntry = (Entry)sender;
         }
         private void SearchBox_Unfocused(object sender, FocusEventArgs e)
         {
-            vm.MainContentVisible = true;
+            //vm.MainContentVisible = true;
         }
-       
-        private void Tap_Go_To_UserPage(object sender, EventArgs e)
+
+        private void ListViewRecentSearches_ItemTapped(object sender, ItemTappedEventArgs e)
         {
 
         }
-
-        private void Tap_Go_To_Basket(object sender, EventArgs e)
+        int x = 0;
+        private void ListViewRecentSearches_Scrolled(object sender, ScrolledEventArgs e)
         {
-
+            //if (e.ScrollY > (x + 30) || e.ScrollY < (x - 30))
+            //{
+            //    EntrySearch.Unfocus();
+            //    x = (int)e.ScrollY;
+            //}
         }
 
-        private void ListV_RecentSearches_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private void EntrySearch_Completed(object sender, EventArgs e)
         {
-
+            vm.AddWordForRecentSearchList(((Entry)sender).Text );
         }
-
-        private void ListViewRecentSearches_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-
-        }
+        
     }
 }

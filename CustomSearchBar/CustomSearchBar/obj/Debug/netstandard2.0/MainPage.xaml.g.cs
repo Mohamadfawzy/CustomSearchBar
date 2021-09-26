@@ -17,7 +17,10 @@ namespace CustomSearchBar {
     public partial class MainPage : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::CustomSearchBar.Controllers.CustomEntry EtyPass;
+        private global::Xamarin.Forms.Label MenuIcon;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::CustomSearchBar.Controllers.CustomEntry EntrySearch;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.Grid scrollMain;
@@ -28,7 +31,8 @@ namespace CustomSearchBar {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(MainPage));
-            EtyPass = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::CustomSearchBar.Controllers.CustomEntry>(this, "EtyPass");
+            MenuIcon = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "MenuIcon");
+            EntrySearch = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::CustomSearchBar.Controllers.CustomEntry>(this, "EntrySearch");
             scrollMain = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Grid>(this, "scrollMain");
             ListViewRecentSearches = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ListView>(this, "ListViewRecentSearches");
         }

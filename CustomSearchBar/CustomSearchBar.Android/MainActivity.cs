@@ -4,6 +4,8 @@ using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+using CustomSearchBar.Droid.Renderers;
+using Android.Views;
 
 namespace CustomSearchBar.Droid
 {
@@ -24,5 +26,30 @@ namespace CustomSearchBar.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+        #region this code implement => How to keep soft keyboard always open in Xamarin Forms
+        private bool _lieAboutCurrentFocus;
+        public override bool DispatchTouchEvent(MotionEvent ev)
+        {
+            var focused = CurrentFocus;
+            bool customEntryRendererFocused = focused != null && focused.Parent is CustomEntryRenderer;
+
+            _lieAboutCurrentFocus = customEntryRendererFocused;
+            var result = base.DispatchTouchEvent(ev);
+            _lieAboutCurrentFocus = false;
+            return result;
+        }
+        public override Android.Views.View CurrentFocus
+        {
+            get
+            {
+                if (_lieAboutCurrentFocus)
+                {
+                    return null;
+                }
+
+                return base.CurrentFocus;
+            }
+        }
+        #endregion
     }
 }

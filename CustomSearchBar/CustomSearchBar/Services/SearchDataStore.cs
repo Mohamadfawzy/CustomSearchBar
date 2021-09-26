@@ -7,7 +7,7 @@ namespace CustomSearchBar.Services
 
     public static class SearchDataStore
     {
-        private static IEnumerable<string> DataRecentSearch = new List<string>()
+        private static List<string> DataRecentSearch = new List<string>()
         {
             "pizza",
             "mixed grill",
@@ -29,9 +29,13 @@ namespace CustomSearchBar.Services
             "shrimp", // جمبري
 
         };
-        public static IEnumerable<string> GetItemsAsync()
+        public static IEnumerable<string> GetItems()
         {
             return DataRecentSearch;
+        }
+        public static void SetItem(string item)
+        {
+            DataRecentSearch.Add(item);
         }
     }
 

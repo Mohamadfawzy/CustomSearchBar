@@ -39,12 +39,12 @@ Features:
 ``` xml
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage x:Name="this">
-    <Grid x:Name="GrandParent" RowDefinitions="Auto,Auto,*">
+    <Grid x:Name="GrandParent" RowDefinitions="120,*">
         <!-- Items on your page 
         ... -->
 
         <controllers:SideMenu x:Name="sideMenu"
-                            Grid.Row="0" Grid.RowSpan="3"
+                            Grid.Row="0" Grid.RowSpan="2"
                             IsPresented="False">
         </controllers:SideMenu>
     </Grid>

@@ -43,7 +43,8 @@ namespace CustomSearchBar
         {
             vm.AddWordForRecentSearchList(((Entry)sender).Text);
         }
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        // is not usees .
+        private void TapOpenSideMenu(object sender, EventArgs e)
         {
             sideMenu.IsPresented  = true;
         }

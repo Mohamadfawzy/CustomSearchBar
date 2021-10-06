@@ -67,7 +67,7 @@
     <!-- GrandParent -with 3 parent  -->
     <ContentPage.Content>
         <Grid x:Name="GrandParent"
-              RowDefinitions="120,*,0"
+              RowDefinitions="120,*"
               VerticalOptions="FillAndExpand"
               RowSpacing="0">
             <!-- 1- Header... -With 2 chillds ................................................................................. -->
@@ -99,7 +99,7 @@
 
                         </Label>
                         <!--<Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                            <TapGestureRecognizer Tapped="TapOpenSideMenu" />
                         </Frame.GestureRecognizers>-->
                     </Frame>
 
@@ -411,7 +411,7 @@
 
             <controllers:SideMenu x:Name="sideMenu"
                                   Grid.Row="0"
-                                  Grid.RowSpan="3"
+                                  Grid.RowSpan="2"
                                   IsPresented="False">
                 <!-- 
                 HeightRequest="{Binding Source={x:Reference this},Path=Content.Height}"

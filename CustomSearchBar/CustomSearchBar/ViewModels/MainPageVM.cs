@@ -88,7 +88,7 @@ namespace CustomSearchBar.ViewModels
         public ICommand ExitSearchCommand => new Command(ExecuteExitSearchCommand);
         public ICommand EraseEntrySearshCommand => new Command(EraseEntrySearch);
         public ICommand CancelImage_RecentSearch_Command => new Command<string>(ExecuteCancelImage_RecentSearch_Command);
-        public ICommand MenuIconCommand => new Command(EMenuIcon_Command);
+        public ICommand MenuIconCommand => new Command<Label>(EMenuIcon_Command);
         // constructor
         public MainPageVM()
         {
@@ -109,7 +109,7 @@ namespace CustomSearchBar.ViewModels
                 await LocalizationResourceManager.SetLanguageAsync("ar");
             }
         }
-        private void EMenuIcon_Command(object sender)
+        private void EMenuIcon_Command(Label sender)
         {
             var label = sender as Xamarin.Forms.Label;
             if (label.Text == IconFont.Close)

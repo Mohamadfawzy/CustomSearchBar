@@ -3,6 +3,7 @@ using Android.Content;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
+using Android.Views.InputMethods;
 using Android.Widget;
 using CustomSearchBar.Controllers;
 using CustomSearchBar.Droid.Renderers;
@@ -28,6 +29,9 @@ namespace CustomSearchBar.Droid.Renderers
             {
                 Control.SetBackgroundColor(global::Android.Graphics.Color.Transparent);
             }
+            //// Dismiss the Keyboard 
+            //InputMethodManager imm = (InputMethodManager)this.Context.GetSystemService(Context.InputMethodService);
+            //imm.HideSoftInputFromWindow(this.Control.WindowToken, 0);
 
         }
 

@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CustomSearchBar.Controllers.SideMenuItems"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             IsVisible="true"
+             Opacity="0"
+             x:Name="thisXaml">
+    
+    <StackLayout.Resources>
+        <ResourceDictionary>
+            <!-- stacks -->
+            <Style TargetType="StackLayout"
+                   x:Key="FirstStackTableSection">
+                <Setter Property="HeightRequest"
+                        Value="50" />
+                <Setter Property="BackgroundColor"
+                        Value="Transparent" />
+                <!--<Setter Property="xct:TouchEffect.Command"
+                        Value="{Binding ItemTapd}" />-->
+                <Setter Property="xct:TouchEffect.PressedBackgroundColor"
+                        Value="Aquamarine" />
+                <Setter Property="xct:TouchEffect.PressedScale"
+                        Value="0.98" />
+                <Setter Property="xct:TouchEffect.PressedAnimationDuration"
+                        Value="100" />
+                <Setter Property="xct:TouchEffect.NativeAnimation"
+                        Value="True" />
+            </Style>
+            <Style TargetType="StackLayout"
+                   x:Key="StackTableSection">
+                <Setter Property="Orientation"
+                        Value="Horizontal" />
+                <Setter Property="Spacing"
+                        Value="15" />
+                <Setter Property="Padding"
+                        Value="25,0" />
+                <Setter Property="VerticalOptions"
+                        Value="CenterAndExpand" />
+                <Setter Property="BackgroundColor"
+                        Value="Transparent" />
+            </Style>
+            
+            <!-- labels -->
+            <Style TargetType="Label"
+                   x:Key="ItemIcon">
+                <Setter Property="FontFamily"
+                        Value="IconFont" />
+                <Setter Property="FontSize"
+                        Value="20" />
+                <Setter Property="TextColor"
+                        Value="Gray" />
+            </Style>
+            <Style TargetType="Label"
+                   x:Key="ItemTitle">
+                <Setter Property="FontFamily"
+                        Value="IconFont" />
+                <Setter Property="FontSize"
+                        Value="18" />
+            </Style>
+            
+        </ResourceDictionary>
+    </StackLayout.Resources>
+    <StackLayout x:Name="testAnimation"
+                 BindingContext="{x:Reference thisXaml}"
+                 Style="{StaticResource FirstStackTableSection}"
+                 xct:TouchEffect.Command="{Binding ItemTappedCommand}"
+                 xct:TouchEffect.CommandParameter="{Binding ItemId}"
+                 AnchorX="0"
+                 AnchorY="0">
+        <StackLayout Style="{StaticResource StackTableSection}">
+            <Label Style="{StaticResource ItemIcon}"
+                   Text="{Binding Icon}" />
+            <Label Style="{StaticResource ItemTitle}" 
+                   Text="{Binding Title}" />
+        </StackLayout>
+    </StackLayout>
+</StackLayout>

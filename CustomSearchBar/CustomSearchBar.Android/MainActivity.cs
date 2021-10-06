@@ -1,11 +1,11 @@
-﻿using System;
-
+﻿
 using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
 using Android.OS;
-using CustomSearchBar.Droid.Renderers;
+using Android.Runtime;
 using Android.Views;
+using CustomSearchBar.Droid.Renderers;
+using Xamarin.Forms.Platform.Android;
 
 namespace CustomSearchBar.Droid
 {
@@ -18,6 +18,14 @@ namespace CustomSearchBar.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            Window.SetNavigationBarColor(Xamarin.Forms.Color.FromHex("#cb1901").ToAndroid());
+            this.SetStatusBarColor(Xamarin.Forms.Color.FromHex("#cb1901").ToAndroid());
+
+            // to open settings
+            //Intent intentOpenSettings = new Intent();
+            //intentOpenSettings.SetAction(Android.Provider.Settings.ActionAirplaneModeSettings);
+            //Android.App.Application.Context.StartActivity(intentOpenSettings);
+
             LoadApplication(new App());
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
@@ -51,5 +59,5 @@ namespace CustomSearchBar.Droid
             }
         }
         #endregion
-    }
+    } // end MainActivity class
 }

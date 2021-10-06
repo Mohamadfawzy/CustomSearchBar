@@ -1,4 +1,6 @@
 ﻿using CustomSearchBar.Fonts;
+using CustomSearchBar.Interfaces;
+using CustomSearchBar.Services;
 using CustomSearchBar.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -18,35 +20,37 @@ namespace CustomSearchBar
             InitializeComponent();
             vm = BindingContext as MainPageVM;
         }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            vm.SideMenu = sideMenu;
+        }
         private void SearchBox_focused(object sender, FocusEventArgs e)
         {
-            vm.MainContentVisible = false;
-            MenuIcon.Text = IconFont.Close;
+            Task.Run(() =>
+            {
+                _= vm.AnimationMenuIcon(labelMenuIcon, "close");
+
+            });
+            vm.ParentContentVisible = false;
             vm.ReceivesEntry = (Entry)sender;
-        }
-        private void SearchBox_Unfocused(object sender, FocusEventArgs e)
-        {
-            //vm.MainContentVisible = true;
-        }
+            vm.ColorChange("", true);
+            framLanguage.IsVisible = false;
 
-        private void ListViewRecentSearches_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-
-        }
-        int x = 0;
-        private void ListViewRecentSearches_Scrolled(object sender, ScrolledEventArgs e)
-        {
-            //if (e.ScrollY > (x + 30) || e.ScrollY < (x - 30))
-            //{
-            //    EntrySearch.Unfocus();
-            //    x = (int)e.ScrollY;
-            //}
         }
 
         private void EntrySearch_Completed(object sender, EventArgs e)
         {
-            vm.AddWordForRecentSearchList(((Entry)sender).Text );
+            vm.AddWordForRecentSearchList(((Entry)sender).Text);
         }
-        
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            sideMenu.IsPresented  = true;
+        }
+
+        private void EntrySearch_Unfocused(object sender, FocusEventArgs e)
+        {
+            framLanguage.IsVisible = true;
+        }
     }
 }

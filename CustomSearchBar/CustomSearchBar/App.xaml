@@ -3,24 +3,5 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CustomSearchBar.App">
     <Application.Resources>
-        <ResourceDictionary>
-            <Color x:Key="MainRedColor">#cb1901</Color>
-            <Color x:Key="DarkRed">#400101</Color>
-            <Color x:Key="SecondRed">#8C2727</Color>
-            <Color x:Key="PowderBlue">#B4D2D9</Color>
-            <Color x:Key="WhiteColor">#F2F2F2</Color>
-            <Color x:Key="DarkGreen">#034001</Color>
-            <Color x:Key="BackgroundImage">Black</Color>
-            <Color x:Key="WhiteSmoke">#F5F5F5</Color>
-            <Color x:Key="LightCyan">#E0FFFF</Color>
-            <!-- back button icon-->
-            <x:String x:Key="BackButtonIconCurrent">Empty</x:String>
-            <x:String x:Key="BackButtonIconEn">backButton.png</x:String>
-            <x:String x:Key="BackButtonIconAr">arrow_gray.png</x:String>
-            <!-- Flow direction -->
-            <x:String x:Key="FlowDirectionCurrent">RightToLeft</x:String>
-            <x:String x:Key="FlowDirectionRight">RightToLeft</x:String>
-            <x:String x:Key="FlowDirectionLeft">LeftToRight</x:String>
-        </ResourceDictionary>
     </Application.Resources>
 </Application>

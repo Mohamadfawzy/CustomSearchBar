@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:frame="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="CustomSearchBar.Controllers.SideMenu"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:controllers="clr-namespace:CustomSearchBar.Controllers"
+             BackgroundColor="Transparent"
+             VerticalOptions="Start"
+             x:Name="this"
+             BindingContext="{x:Reference this}"
+             IsVisible="false"
+             xmlns:icon="clr-namespace:CustomSearchBar.Fonts"
+             xmlns:rsc="clr-namespace:CustomSearchBar.Resources.Languages"
+             >
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <!-- -->
+            <!-- Labels -->
+            <Style TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="20" />
+                <Setter Property="TextColor"
+                        Value="Black" />
+                <Setter Property="HorizontalOptions"
+                        Value="Center" />
+                
+            </Style>
+            <!-- box view -->
+            <Style TargetType="BoxView">
+                <Setter Property="Color"
+                        Value="LightGray" />
+                <Setter Property="HorizontalOptions"
+                        Value="FillAndExpand" />
+                <Setter Property="VerticalOptions"
+                        Value="Start" />
+                <Setter Property="HeightRequest"
+                        Value="2" />
+            </Style>
+            <!-- -->
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid x:Name="GrandParent"
+              ColumnDefinitions="0.75*,0.25*"
+              VerticalOptions="FillAndExpand"
+              RowDefinitions="Auto"
+              HorizontalOptions="FillAndExpand">
+            <!-- Column 2 -->
+            <StackLayout x:Name="backgroundBhind" Grid.Column="0"
+                         Grid.ColumnSpan="2"
+                         BackgroundColor="#90000000"
+                         HorizontalOptions="FillAndExpand"
+                         Opacity="0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                    <PanGestureRecognizer PanUpdated="OnPanUpdated" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+            <!-- Column 1 -->
+            <StackLayout x:Name="parentSideMenu"
+                         TranslationX="{Binding Source={Reference parentSideMenu}, Path=Width, StringFormat='-{0}'}"
+                         BackgroundColor="Transparent"
+                         VerticalOptions="FillAndExpand"
+                         HeightRequest="{Binding Source={Reference this}, Path=Height}"
+                         InputTransparent="False"
+                         CascadeInputTransparent="True"
+                         >
+                <frame:PancakeView x:Name="frameSM"
+                                   Padding="0"
+                                   Margin="0"
+                                   CornerRadius="0,30,0,0"
+                                   BackgroundColor="White"
+                                   VerticalOptions="FillAndExpand">
+                    <AbsoluteLayout VerticalOptions="Start">
+                        <!-- hedear -->
+                        <StackLayout VerticalOptions="Fill"
+                                     BackgroundColor="#D7D8C9"
+                                     AbsoluteLayout.LayoutBounds="0,0,1,0.3"
+                                     AbsoluteLayout.LayoutFlags="All"
+                                     IsClippedToBounds="True"
+                                     Spacing="0">
+                            <StackLayout Padding="30,0"
+                                         VerticalOptions="CenterAndExpand"
+                                         IsClippedToBounds="True">
+                                <!--<frame:PancakeView IsClippedToBounds="True"
+                                                   HeightRequest="90"
+                                                   WidthRequest="90"
+                                                   CornerRadius="45"
+                                                   BackgroundColor="Transparent"
+                                                   HorizontalOptions="Start"
+                                                   VerticalOptions="Center"
+                                                   Border="{frame:BorderMarkup Color=Transparent, Thickness=5}">
+                                </frame:PancakeView>-->
+
+                                <Image Source="mfh"
+                                       Aspect="AspectFit"
+                                       BackgroundColor="Black"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Center"
+                                       HeightRequest="70"
+                                       WidthRequest="70">
+                                    <Image.Clip>
+                                        <EllipseGeometry Center="35,35"
+                                                         RadiusX="35"
+                                                         RadiusY="35" />
+                                    </Image.Clip>
+                                </Image>
+
+                                <!-- name -->
+                                <Label Text="{x:Static rsc:LanguageResources.SideMenu_Heaer_PersonName}"
+                                       TextColor="Black"
+                                       FontSize="19"
+                                       FontAttributes="Bold"
+                                       VerticalOptions="Start" 
+                                       HorizontalOptions="Start"/>
+                                <Label Text="MFawzyHelal@outlook.com"
+                                       FontSize="15"
+                                       TextColor="Gray"
+                                       VerticalOptions="Start"
+                                       HorizontalOptions="Start"
+                                       />
+                            </StackLayout>
+
+                            <BoxView Color="Gray" VerticalOptions="End"/>
+                        </StackLayout>
+                        <!-- Items -->
+                        <ScrollView AbsoluteLayout.LayoutBounds="0,1,1,0.7"
+                                    AbsoluteLayout.LayoutFlags="All"
+                                    BackgroundColor="White"
+                                    HorizontalScrollBarVisibility="Never"
+                                    Orientation="Both"
+                                    VerticalOptions="FillAndExpand"
+                                    Scrolled="ScrollView_Scrolled">
+                            <StackLayout x:Name="contenairItems"
+                                         Padding="0,15,0,0"
+                                         VerticalOptions="FillAndExpand"
+                                         WidthRequest="{Binding Source={Reference parentSideMenu}, Path=Width}">
+                                <controllers:SideMenuItems Icon="{Binding Source={Reference this}, Path=ItemsIconsArray[0]}"
+                                                           Title="{Binding Source={Reference this}, Path=ItemsTitlesArray[0]}"
+                                                           ItemId="a">
+                                </controllers:SideMenuItems>
+                                <controllers:SideMenuItems Icon="{Binding Source={Reference this}, Path=ItemsIconsArray[1]}"
+                                                           Title="{Binding Source={Reference this}, Path=ItemsTitlesArray[1]}" 
+                                                           ItemId="b"/>
+                                <controllers:SideMenuItems Icon="{Binding Source={Reference this}, Path=ItemsIconsArray[2]}"
+                                                           Title="{Binding Source={Reference this}, Path=ItemsTitlesArray[2]}"
+                                                           ItemId="c" />
+                                <controllers:SideMenuItems Icon="{Binding Source={Reference this}, Path=ItemsIconsArray[3]}"
+                                                           Title="{Binding Source={Reference this}, Path=ItemsTitlesArray[3]}"
+                                                           ItemId="d" />
+                                <controllers:SideMenuItems Icon="{Binding Source={Reference this}, Path=ItemsIconsArray[4]}"
+                                                           Title="{Binding Source={Reference this}, Path=ItemsTitlesArray[4]}"
+                                                           ItemId="5">
+                                </controllers:SideMenuItems>
+                                <controllers:SideMenuItems Icon="{Binding Source={Reference this}, Path=ItemsIconsArray[5]}"
+                                                           Title="{Binding Source={Reference this}, Path=ItemsTitlesArray[5]}"
+                                                           ItemId="f" />
+                                <controllers:SideMenuItems Icon="{Binding Source={Reference this}, Path=ItemsIconsArray[6]}"
+                                                           Title="{Binding Source={Reference this}, Path=ItemsTitlesArray[6]}"
+                                                           ItemId="g" />
+                                <controllers:SideMenuItems Icon="{Binding Source={Reference this}, Path=ItemsIconsArray[7]}"
+                                                           Title="{Binding Source={Reference this}, Path=ItemsTitlesArray[7]}"
+                                                           ItemId="g" />
+                                <controllers:SideMenuItems Icon="{Binding Source={Reference this}, Path=ItemsIconsArray[8]}"
+                                                           Title="{Binding Source={Reference this}, Path=ItemsTitlesArray[8]}"
+                                                           ItemId="g">
+                                    <BoxView  />
+                                </controllers:SideMenuItems>
+                                <controllers:SideMenuItems Icon="{Binding Source={Reference this}, Path=ItemsIconsArray[9]}"
+                                                           Title="{Binding Source={Reference this}, Path=ItemsTitlesArray[9]}"
+                                                           ItemId="g" />
+                                <controllers:SideMenuItems Icon="{Binding Source={Reference this}, Path=ItemsIconsArray[10]}"
+                                                           Title="{Binding Source={Reference this}, Path=ItemsTitlesArray[10]}"
+                                                           ItemId="g">
+                                    <BoxView />
+                                </controllers:SideMenuItems>
+                                <controllers:SideMenuItems Icon="{Binding Source={Reference this}, Path=ItemsIconsArray[11]}"
+                                                           Title="{Binding Source={Reference this}, Path=ItemsTitlesArray[11]}"
+                                                           ItemId="12" />
+
+                            </StackLayout>
+                        </ScrollView>
+                    </AbsoluteLayout>
+                </frame:PancakeView>
+                <StackLayout.GestureRecognizers>
+                    <PanGestureRecognizer PanUpdated="OnPanUpdated" TouchPoints="0" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

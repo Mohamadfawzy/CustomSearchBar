@@ -45,8 +45,6 @@ Features:
 
         <controllers:SideMenu x:Name="sideMenu"
                             Grid.Row="0" Grid.RowSpan="3"
-                            HorizontalOptions="Fill"
-                            HeightRequest="{Binding Source={x:Reference this},Path=Content.Height}"
                             IsPresented="False">
         </controllers:SideMenu>
     </Grid>
@@ -55,7 +53,7 @@ Features:
 ## To open side Menu
 ``` c#
 private void TapOpenSideMenu(object sender, EventArgs e)
-    {
-        sideMenu.IsPresented  = true;
-    }
+{
+    sideMenu.IsPresented  = true;
+}
 ```

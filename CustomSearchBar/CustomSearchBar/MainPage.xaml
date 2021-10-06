@@ -65,354 +65,358 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <!-- GrandParent -with 3 parent  -->
-    <Grid x:Name="GrandParent"
-          RowDefinitions="120,*,0"
-          VerticalOptions="FillAndExpand"
-          RowSpacing="0">
-        <!-- 1- Header... -With 2 chillds ................................................................................. -->
-        <StackLayout Grid.Row="0"
-                     x:Name="parentHeader"
-                     BackgroundColor="{StaticResource RedColor}"
-                     VerticalOptions="Fill"
-                     Orientation="Vertical"
-                     Spacing="0">
-            <!-- Containar -have 2 lable=> Name & MenuICon -->
-            <StackLayout Orientation="Horizontal"
-                         Padding="0,0"
+    <ContentPage.Content>
+        <Grid x:Name="GrandParent"
+              RowDefinitions="120,*,0"
+              VerticalOptions="FillAndExpand"
+              RowSpacing="0">
+            <!-- 1- Header... -With 2 chillds ................................................................................. -->
+            <StackLayout Grid.Row="0"
+                         x:Name="parentHeader"
+                         BackgroundColor="{StaticResource RedColor}"
+                         VerticalOptions="Fill"
+                         Orientation="Vertical"
                          Spacing="0">
-                <!-- Menu Icon -->
-                <Frame Style="{StaticResource FrameCircleTouch}"
-                       HeightRequest="60"
-                       WidthRequest="60"
-                       CornerRadius="30"
-                       BackgroundColor="Transparent"
-                       xct:TouchEffect.Command="{Binding MenuIconCommand}"
-                       xct:TouchEffect.CommandParameter="{x:Reference labelMenuIcon}">
-                    <Label x:Name="labelMenuIcon"
-                           Text="{x:Static icon:IconFont.ViewHeadline}"
-                           FontFamily="IconFont"
-                           FontSize="30"
-                           TextColor="{StaticResource WhiteColor}"
-                           HorizontalOptions="Center"
-                           VerticalOptions="Center">
-
-                    </Label>
-                    <!--<Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                    </Frame.GestureRecognizers>-->
-                </Frame>
-
-                <!-- Name -->
-                <Label Text="{x:Static rcs:LanguageResources.MainPage_NameApp}"
-                       VerticalOptions="Center"
-                       TextColor="{StaticResource WhiteColor}"
-                       HorizontalOptions="Start"
-                       FontSize="20"
-                       Margin="0,0" />
-                <!-- language -->
-                <Frame x:Name="framLanguage"
-                       Style="{StaticResource FrameCircleTouch}"
-                       HorizontalOptions="EndAndExpand"
-                       VerticalOptions="Center"
-                       Padding="10,0"
-                       xct:TouchEffect.Command="{Binding ChangeLaguageCommand }"
-                       xct:TouchEffect.CommandParameter="{Binding Source={x:Reference lblLang}}">
-                    <Label x:Name="lblLang"
-                           Padding="0"
-                           FontSize="15"
-                           Text="{x:Static rcs:LanguageResources.MainPage_lbl_Language}"
-                           TextColor="{StaticResource WhiteColor}"
-                           HorizontalOptions="Center"
-                           VerticalOptions="Center" />
-                </Frame>
-            </StackLayout>
-            <!-- Frame searchBar -Contain 2 elements -->
-            <frame:PancakeView CornerRadius="7"
-                               HorizontalOptions="FillAndExpand"
-                               BackgroundColor="{StaticResource WhiteColor}"
-                               Margin="8,2,8,8"
-                               Padding="0">
-                <!-- Containar -have MagnifyIcon,SearchEntry,ClearIcon -->
-                <StackLayout HorizontalOptions="FillAndExpand"
-                             VerticalOptions="Center"
-                             Orientation="Horizontal"
-                             Spacing="0"
-                             xct:TouchEffect.NativeAnimation="True"
-                             xct:TouchEffect.NativeAnimationColor="{StaticResource BlackColor}">
-                    <!-- Magnify Icon-->
-                    <Label Text="{x:Static icon:IconFont.Magnify}"
-                           FontFamily="IconFont"
-                           Padding="10,0"
-                           FontSize="25"
-                           Margin="0,4,0,0"
-                           VerticalOptions="Center"
-                           TextColor="{StaticResource RedColor}" />
-                    <!-- Entry for search -->
-                    <controllers:CustomEntry Placeholder="{x:Static rcs:LanguageResources.MainPage_ety_SearchPlaceHolder}"
-                                             x:Name="entrySearch"
-                                             VerticalOptions="CenterAndExpand"
-                                             HorizontalOptions="FillAndExpand"
-                                             Text="{Binding EntrySearch}"
-                                             xct:TouchEffect.NativeAnimation="True"
-                                             xct:TouchEffect.NativeAnimationColor="Transparent"
-                                             Focused="SearchBox_focused"
-                                             Unfocused="EntrySearch_Unfocused"
-                                             Completed="EntrySearch_Completed" />
-                    <!-- Frame Clear icon -->
+                <!-- Containar -have 2 lable=> Name & MenuICon -->
+                <StackLayout Orientation="Horizontal"
+                             Padding="0,0"
+                             Spacing="0">
+                    <!-- Menu Icon -->
                     <Frame Style="{StaticResource FrameCircleTouch}"
-                           xct:TouchEffect.Command="{Binding EraseEntrySearshCommand}">
-                        <Label Text="{x:Static icon:IconFont.Close}"
-                               IsVisible="true"
+                           HeightRequest="60"
+                           WidthRequest="60"
+                           CornerRadius="30"
+                           BackgroundColor="Transparent"
+                           xct:TouchEffect.Command="{Binding MenuIconCommand}"
+                           xct:TouchEffect.CommandParameter="{x:Reference labelMenuIcon}">
+                        <Label x:Name="labelMenuIcon"
+                               Text="{x:Static icon:IconFont.ViewHeadline}"
                                FontFamily="IconFont"
-                               FontSize="20"
-                               Padding="10"
-                               VerticalOptions="Fill"
-                               HorizontalOptions="End"
-                               TextColor="{StaticResource OrangeRedColor}"
-                               BackgroundColor="Transparent">
+                               FontSize="30"
+                               TextColor="{StaticResource WhiteColor}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center">
+
                         </Label>
-                        <!-- Trigger if  entrySearch not empty => IsVisible = false -->
-                        <Frame.Triggers>
-                            <DataTrigger TargetType="Frame"
-                                         Binding="{Binding Source={x:Reference entrySearch},Path=Text.Length}"
-                                         Value="0">
-                                <Setter Property="IsVisible"
-                                        Value="False" />
-                            </DataTrigger>
-                        </Frame.Triggers>
+                        <!--<Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                        </Frame.GestureRecognizers>-->
+                    </Frame>
+
+                    <!-- Name -->
+                    <Label Text="{x:Static rcs:LanguageResources.MainPage_NameApp}"
+                           VerticalOptions="Center"
+                           TextColor="{StaticResource WhiteColor}"
+                           HorizontalOptions="Start"
+                           FontSize="20"
+                           Margin="0,0" />
+                    <!-- language -->
+                    <Frame x:Name="framLanguage"
+                           Style="{StaticResource FrameCircleTouch}"
+                           HorizontalOptions="EndAndExpand"
+                           VerticalOptions="Center"
+                           Padding="10,0"
+                           xct:TouchEffect.Command="{Binding ChangeLaguageCommand }"
+                           xct:TouchEffect.CommandParameter="{Binding Source={x:Reference lblLang}}">
+                        <Label x:Name="lblLang"
+                               Padding="0"
+                               FontSize="15"
+                               Text="{x:Static rcs:LanguageResources.MainPage_lbl_Language}"
+                               TextColor="{StaticResource WhiteColor}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center" />
                     </Frame>
                 </StackLayout>
-            </frame:PancakeView>
-            <!-- Trigger if parentBody is not visible => Background = BlackColor -->
-            <StackLayout.Triggers>
-                <DataTrigger TargetType="StackLayout"
-                             Binding="{Binding Source={x:Reference parentBody},Path=IsVisible }"
-                             Value="false">
-                    <Setter Property="BackgroundColor"
-                            Value="{StaticResource BlackColor}" />
-                </DataTrigger>
-            </StackLayout.Triggers>
-        </StackLayout>
-
-        <!-- 2- body... -with 3 childs...................................................................................... -->
-        <ScrollView Grid.Row="1"
-                    BackgroundColor="Transparent">
-
-            <Grid RowDefinitions="Auto,Auto"
-                  x:Name="parentBody"
-                  BackgroundColor="{StaticResource WhiteColor}"
-                  IsVisible="{Binding ParentContentVisible}"
-                  RowSpacing="0"
-                  Margin="0,0,0,0"
-                  Padding="0">
-
-                <!-- FoodMenu -->
-                <StackLayout Grid.Row="0"
-                             VerticalOptions="Start">
-                    <CollectionView x:Name="CVMenus"
-                                    HorizontalOptions="CenterAndExpand"
-                                    VerticalOptions="Center"
-                                    SelectionMode="None"
-                                    HeightRequest="110"
-                                    Margin="0,10,0,0"
-                                    ItemsSource="{Binding FoodMenu}">
-                        <CollectionView.ItemsLayout>
-                            <LinearItemsLayout Orientation="Horizontal"
-                                               ItemSpacing="0" />
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <StackLayout Padding="7,10"
-                                             VerticalOptions="CenterAndExpand">
-                                    <frame:PancakeView CornerRadius="30"
-                                                       HeightRequest="50"
-                                                       WidthRequest="50"
-                                                       HorizontalOptions="Center"
-                                                       VerticalOptions="Center"
-                                                       IsClippedToBounds="True">
-                                        <Image Source="{Binding URL}"
-                                               Aspect="AspectFill" />
-                                    </frame:PancakeView>
-                                    <Label Text="{Binding Name}"
-                                           FontSize="13"
-                                           TextColor="Black"
-                                           HorizontalOptions="Center" />
-                                </StackLayout>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </StackLayout>
-                <!-- ClassificationFood -->
-                <StackLayout Grid.Row="1"
-                             VerticalOptions="Start">
-                    <CollectionView HorizontalOptions="CenterAndExpand"
-                                    VerticalOptions="Center"
-                                    SelectionMode="None"
-                                    Margin="0"
-                                    ItemsSource="{Binding ClassificationFood }"
-                                    HeightRequest="1300">
-                        <!--<CollectionView.ItemsSource >
-                            <x:Array Type="{x:Type x:String}">
-                                <x:String>Name 1</x:String>
-                                <x:String>Name 2</x:String>
-                                <x:String>Name 3</x:String>
-                                <x:String>Name 4</x:String>
-                            </x:Array>
-                        </CollectionView.ItemsSource>-->
-                        <CollectionView.ItemsLayout>
-                            <LinearItemsLayout Orientation="Vertical"
-                                               ItemSpacing="0" />
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <StackLayout Padding="0,10">
-                                    <!-- -->
-                                    <StackLayout>
-                                        <Label Margin="20,5"
-                                               TextColor="Black"
-                                               Text="{Binding .}"
-                                               FontSize="18" />
-                                        <!-- Inner Collection -->
-                                        <CollectionView HeightRequest="250"
-                                                        ItemsSource="{StaticResource Array2}">
-                                            <CollectionView.ItemsLayout>
-                                                <LinearItemsLayout Orientation="Horizontal"
-                                                                   ItemSpacing="0" />
-                                            </CollectionView.ItemsLayout>
-                                            <CollectionView.ItemTemplate>
-                                                <DataTemplate>
-                                                    <StackLayout VerticalOptions="Fill"
-                                                                 Spacing="0">
-                                                        <frame:PancakeView Margin="10"
-                                                                           CornerRadius="7"
-                                                                           Shadow="{frame:ShadowMarkup BlurRadius=10}"
-                                                                           VerticalOptions="FillAndExpand"
-                                                                           WidthRequest="210"
-                                                                           Padding="0"
-                                                                           BackgroundColor="WhiteSmoke">
-                                                            <StackLayout HorizontalOptions="FillAndExpand"
-                                                                         Spacing="5">
-                                                                <Image Source="{Binding .}"
-                                                                       Aspect="AspectFill"
-                                                                       HeightRequest="130"
-                                                                       WidthRequest="220"
-                                                                       HorizontalOptions="Start"
-                                                                       VerticalOptions="Start" />
-                                                                <Label Text="{x:Static rcs:LanguageResources.MainPage_lbl_Meal}"
-                                                                       FontSize="18"
-                                                                       TextColor="Black"
-                                                                       Margin="10,0" />
-                                                                <Label Text="47.00 $"
-                                                                       FontSize="16"
-                                                                       Margin="10,0" />
-                                                                <Button Text="{x:Static rcs:LanguageResources.MainPage_btn_AddToBasket}"
-                                                                        BackgroundColor="{StaticResource RedColor}"
-                                                                        TextColor="{StaticResource WhiteColor}"
-                                                                        HorizontalOptions="FillAndExpand" />
-                                                            </StackLayout>
-                                                        </frame:PancakeView>
-                                                    </StackLayout>
-                                                </DataTemplate>
-                                            </CollectionView.ItemTemplate>
-                                        </CollectionView>
-                                    </StackLayout>
-                                </StackLayout>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </StackLayout>
-            </Grid>
-        </ScrollView>
-
-        <!-- 3- floating x:SearchResult... -with 2 chillds label & List .......................................................... -->
-        <StackLayout Grid.Row="1"
-                     x:Name="ParentListRecentSearch"
-                     IsVisible="false"
-                     VerticalOptions="Start"
-                     BackgroundColor="{StaticResource WhiteColor}">
-            <!-- label=> is Visible when the search result is empty. Command(getReseltFromSearch) -->
-            <Label IsVisible="{Binding VisibleEmptySearch }"
-                   Text="{Binding Source={x:Reference entrySearch},Path=Text}"
-                   VerticalOptions="Center"
-                   HorizontalOptions="FillAndExpand"
-                   FontSize="18"
-                   TextColor="Black"
-                   Padding="10,5"
-                   xct:TouchEffect.NativeAnimation="True" />
-            <!-- Search Results -->
-            <ListView x:Name="ListViewRecentSearch"
-                      ItemsSource="{Binding ListRecentSearch}"
-                      SelectionMode="None"
-                      HasUnevenRows="True"
-                      BackgroundColor="{StaticResource WhiteColor}"
-                      SeparatorColor="{StaticResource GrayColor}"
-                      SeparatorVisibility="None">
-                <!-- list Header -->
-                <ListView.Header>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="Recent searches"
-                               TextColor="{StaticResource GrayColor}"
-                               FontSize="16"
-                               Padding="5,0" />
+                <!-- Frame searchBar -Contain 2 elements -->
+                <frame:PancakeView CornerRadius="7"
+                                   HorizontalOptions="FillAndExpand"
+                                   BackgroundColor="{StaticResource WhiteColor}"
+                                   Margin="8,2,8,8"
+                                   Padding="0">
+                    <!-- Containar -have MagnifyIcon,SearchEntry,ClearIcon -->
+                    <StackLayout HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="Center"
+                                 Orientation="Horizontal"
+                                 Spacing="0"
+                                 xct:TouchEffect.NativeAnimation="True"
+                                 xct:TouchEffect.NativeAnimationColor="{StaticResource BlackColor}">
+                        <!-- Magnify Icon-->
+                        <Label Text="{x:Static icon:IconFont.Magnify}"
+                               FontFamily="IconFont"
+                               Padding="10,0"
+                               FontSize="25"
+                               Margin="0,4,0,0"
+                               VerticalOptions="Center"
+                               TextColor="{StaticResource RedColor}" />
+                        <!-- Entry for search -->
+                        <controllers:CustomEntry Placeholder="{x:Static rcs:LanguageResources.MainPage_ety_SearchPlaceHolder}"
+                                                 x:Name="entrySearch"
+                                                 VerticalOptions="CenterAndExpand"
+                                                 HorizontalOptions="FillAndExpand"
+                                                 Text="{Binding EntrySearch}"
+                                                 xct:TouchEffect.NativeAnimation="True"
+                                                 xct:TouchEffect.NativeAnimationColor="Transparent"
+                                                 Focused="SearchBox_focused"
+                                                 Unfocused="EntrySearch_Unfocused"
+                                                 Completed="EntrySearch_Completed" />
+                        <!-- Frame Clear icon -->
+                        <Frame Style="{StaticResource FrameCircleTouch}"
+                               xct:TouchEffect.Command="{Binding EraseEntrySearshCommand}">
+                            <Label Text="{x:Static icon:IconFont.Close}"
+                                   IsVisible="true"
+                                   FontFamily="IconFont"
+                                   FontSize="20"
+                                   Padding="10"
+                                   VerticalOptions="Fill"
+                                   HorizontalOptions="End"
+                                   TextColor="{StaticResource OrangeRedColor}"
+                                   BackgroundColor="Transparent">
+                            </Label>
+                            <!-- Trigger if  entrySearch not empty => IsVisible = false -->
+                            <Frame.Triggers>
+                                <DataTrigger TargetType="Frame"
+                                             Binding="{Binding Source={x:Reference entrySearch},Path=Text.Length}"
+                                             Value="0">
+                                    <Setter Property="IsVisible"
+                                            Value="False" />
+                                </DataTrigger>
+                            </Frame.Triggers>
+                        </Frame>
                     </StackLayout>
-                </ListView.Header>
-                <!-- Template -->
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <!-- Containar -have 2 chills -->
-                            <StackLayout Padding="0,1,0,0"
-                                         Spacing="0">
-                                <!-- have 2 emlements text & FramDeleteIcon-->
-                                <StackLayout Padding="10,0"
-                                             VerticalOptions="Center"
-                                             Orientation="Horizontal"
-                                             Spacing="0">
-                                    <!-- text -->
-                                    <Label Text="{Binding . , FallbackValue='search'  }"
-                                           VerticalOptions="Center"
-                                           HorizontalOptions="StartAndExpand"
-                                           FontSize="18"
-                                           TextColor="Black"
-                                           Padding="10,5" />
-                                    <!-- Frame delete Icon -->
-                                    <Frame Style="{StaticResource FrameCircleTouch}"
-                                           xct:TouchEffect.Command="{Binding Path=BindingContext.CancelImage_RecentSearch_Command, Source={x:Reference ListViewRecentSearch}}"
-                                           xct:TouchEffect.CommandParameter="{Binding .}">
-                                        <Label Text="{x:Static icon:IconFont.Close}"
-                                               FontFamily="IconFont"
-                                               VerticalOptions="Center"
-                                               HorizontalOptions="Center" />
-                                    </Frame>
-                                </StackLayout>
-                                <!-- BoxView as Separator line in end each row -->
-                                <BoxView Color="{StaticResource GrayColor}"
-                                         HeightRequest="0.7"
-                                         VerticalOptions="Start"
-                                         HorizontalOptions="FillAndExpand" />
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <!-- Trigger if parentBody is not visible => Visible = true -->
-            <StackLayout.Triggers>
-                <DataTrigger TargetType="StackLayout"
-                             Binding="{Binding Source={x:Reference parentBody},Path=IsVisible }"
-                             Value="false">
-                    <Setter Property="IsVisible"
-                            Value="True" />
-                </DataTrigger>
-            </StackLayout.Triggers>
-        </StackLayout>
+                </frame:PancakeView>
+                <!-- Trigger if parentBody is not visible => Background = BlackColor -->
+                <StackLayout.Triggers>
+                    <DataTrigger TargetType="StackLayout"
+                                 Binding="{Binding Source={x:Reference parentBody},Path=IsVisible }"
+                                 Value="false">
+                        <Setter Property="BackgroundColor"
+                                Value="{StaticResource BlackColor}" />
+                    </DataTrigger>
+                </StackLayout.Triggers>
+            </StackLayout>
 
-        <!-- 4- floating x:SideMenu... -->
-        <controllers:SideMenu x:Name="sideMenu"
-                              Grid.Row="0"
-                              Grid.RowSpan="3"
-                              HorizontalOptions="Fill"
-                              HeightRequest="{Binding Source={x:Reference this},Path=Content.Height}"
-                              IsPresented="False">
-        </controllers:SideMenu>
-    </Grid>
+            <!-- 2- body... -with 3 childs...................................................................................... -->
+            <ScrollView Grid.Row="1"
+                        BackgroundColor="Transparent">
+
+                <Grid RowDefinitions="Auto,Auto"
+                      x:Name="parentBody"
+                      BackgroundColor="{StaticResource WhiteColor}"
+                      IsVisible="{Binding ParentContentVisible}"
+                      RowSpacing="0"
+                      Margin="0,0,0,0"
+                      Padding="0">
+
+                    <!-- FoodMenu -->
+                    <StackLayout Grid.Row="0"
+                                 VerticalOptions="Start">
+                        <CollectionView x:Name="CVMenus"
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="Center"
+                                        SelectionMode="None"
+                                        HeightRequest="110"
+                                        Margin="0,10,0,0"
+                                        ItemsSource="{Binding FoodMenu}">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Horizontal"
+                                                   ItemSpacing="0" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Padding="7,10"
+                                                 VerticalOptions="CenterAndExpand">
+                                        <frame:PancakeView CornerRadius="30"
+                                                           HeightRequest="50"
+                                                           WidthRequest="50"
+                                                           HorizontalOptions="Center"
+                                                           VerticalOptions="Center"
+                                                           IsClippedToBounds="True">
+                                            <Image Source="{Binding URL}"
+                                                   Aspect="AspectFill" />
+                                        </frame:PancakeView>
+                                        <Label Text="{Binding Name}"
+                                               FontSize="13"
+                                               TextColor="Black"
+                                               HorizontalOptions="Center" />
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                    <!-- ClassificationFood -->
+                    <StackLayout Grid.Row="1"
+                                 VerticalOptions="Start">
+                        <CollectionView HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="Center"
+                                        SelectionMode="None"
+                                        Margin="0"
+                                        ItemsSource="{Binding ClassificationFood }"
+                                        HeightRequest="1300">
+                            <!--<CollectionView.ItemsSource >
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Name 1</x:String>
+                                    <x:String>Name 2</x:String>
+                                    <x:String>Name 3</x:String>
+                                    <x:String>Name 4</x:String>
+                                </x:Array>
+                            </CollectionView.ItemsSource>-->
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Vertical"
+                                                   ItemSpacing="0" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Padding="0,10">
+                                        <!-- -->
+                                        <StackLayout>
+                                            <Label Margin="20,5"
+                                                   TextColor="Black"
+                                                   Text="{Binding .}"
+                                                   FontSize="18" />
+                                            <!-- Inner Collection -->
+                                            <CollectionView HeightRequest="250"
+                                                            ItemsSource="{StaticResource Array2}">
+                                                <CollectionView.ItemsLayout>
+                                                    <LinearItemsLayout Orientation="Horizontal"
+                                                                       ItemSpacing="0" />
+                                                </CollectionView.ItemsLayout>
+                                                <CollectionView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackLayout VerticalOptions="Fill"
+                                                                     Spacing="0">
+                                                            <frame:PancakeView Margin="10"
+                                                                               CornerRadius="7"
+                                                                               Shadow="{frame:ShadowMarkup BlurRadius=10}"
+                                                                               VerticalOptions="FillAndExpand"
+                                                                               WidthRequest="210"
+                                                                               Padding="0"
+                                                                               BackgroundColor="WhiteSmoke">
+                                                                <StackLayout HorizontalOptions="FillAndExpand"
+                                                                             Spacing="5">
+                                                                    <Image Source="{Binding .}"
+                                                                           Aspect="AspectFill"
+                                                                           HeightRequest="130"
+                                                                           WidthRequest="220"
+                                                                           HorizontalOptions="Start"
+                                                                           VerticalOptions="Start" />
+                                                                    <Label Text="{x:Static rcs:LanguageResources.MainPage_lbl_Meal}"
+                                                                           FontSize="18"
+                                                                           TextColor="Black"
+                                                                           Margin="10,0" />
+                                                                    <Label Text="47.00 $"
+                                                                           FontSize="16"
+                                                                           Margin="10,0" />
+                                                                    <Button Text="{x:Static rcs:LanguageResources.MainPage_btn_AddToBasket}"
+                                                                            BackgroundColor="{StaticResource RedColor}"
+                                                                            TextColor="{StaticResource WhiteColor}"
+                                                                            HorizontalOptions="FillAndExpand" />
+                                                                </StackLayout>
+                                                            </frame:PancakeView>
+                                                        </StackLayout>
+                                                    </DataTemplate>
+                                                </CollectionView.ItemTemplate>
+                                            </CollectionView>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
+
+            <!-- 3- floating x:SearchResult... -with 2 chillds label & List .......................................................... -->
+            <StackLayout Grid.Row="1"
+                         x:Name="ParentListRecentSearch"
+                         IsVisible="false"
+                         VerticalOptions="Start"
+                         BackgroundColor="{StaticResource WhiteColor}">
+                <!-- label=> is Visible when the search result is empty. Command(getReseltFromSearch) -->
+                <Label IsVisible="{Binding VisibleEmptySearch }"
+                       Text="{Binding Source={x:Reference entrySearch},Path=Text}"
+                       VerticalOptions="Center"
+                       HorizontalOptions="FillAndExpand"
+                       FontSize="18"
+                       TextColor="Black"
+                       Padding="10,5"
+                       xct:TouchEffect.NativeAnimation="True" />
+                <!-- Search Results -->
+                <ListView x:Name="ListViewRecentSearch"
+                          ItemsSource="{Binding ListRecentSearch}"
+                          SelectionMode="None"
+                          HasUnevenRows="True"
+                          BackgroundColor="{StaticResource WhiteColor}"
+                          SeparatorColor="{StaticResource GrayColor}"
+                          SeparatorVisibility="None">
+                    <!-- list Header -->
+                    <ListView.Header>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Recent searches"
+                                   TextColor="{StaticResource GrayColor}"
+                                   FontSize="16"
+                                   Padding="5,0" />
+                        </StackLayout>
+                    </ListView.Header>
+                    <!-- Template -->
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <!-- Containar -have 2 chills -->
+                                <StackLayout Padding="0,1,0,0"
+                                             Spacing="0">
+                                    <!-- have 2 emlements text & FramDeleteIcon-->
+                                    <StackLayout Padding="10,0"
+                                                 VerticalOptions="Center"
+                                                 Orientation="Horizontal"
+                                                 Spacing="0">
+                                        <!-- text -->
+                                        <Label Text="{Binding . , FallbackValue='search'  }"
+                                               VerticalOptions="Center"
+                                               HorizontalOptions="StartAndExpand"
+                                               FontSize="18"
+                                               TextColor="Black"
+                                               Padding="10,5" />
+                                        <!-- Frame delete Icon -->
+                                        <Frame Style="{StaticResource FrameCircleTouch}"
+                                               xct:TouchEffect.Command="{Binding Path=BindingContext.CancelImage_RecentSearch_Command, Source={x:Reference ListViewRecentSearch}}"
+                                               xct:TouchEffect.CommandParameter="{Binding .}">
+                                            <Label Text="{x:Static icon:IconFont.Close}"
+                                                   FontFamily="IconFont"
+                                                   VerticalOptions="Center"
+                                                   HorizontalOptions="Center" />
+                                        </Frame>
+                                    </StackLayout>
+                                    <!-- BoxView as Separator line in end each row -->
+                                    <BoxView Color="{StaticResource GrayColor}"
+                                             HeightRequest="0.7"
+                                             VerticalOptions="Start"
+                                             HorizontalOptions="FillAndExpand" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <!-- Trigger if parentBody is not visible => Visible = true -->
+                <StackLayout.Triggers>
+                    <DataTrigger TargetType="StackLayout"
+                                 Binding="{Binding Source={x:Reference parentBody},Path=IsVisible }"
+                                 Value="false">
+                        <Setter Property="IsVisible"
+                                Value="True" />
+                    </DataTrigger>
+                </StackLayout.Triggers>
+            </StackLayout>
+
+            <!-- 4- floating x:SideMenu... -->
+
+            <controllers:SideMenu x:Name="sideMenu"
+                                  Grid.Row="0"
+                                  Grid.RowSpan="3"
+                                  IsPresented="False">
+                <!-- 
+                HeightRequest="{Binding Source={x:Reference this},Path=Content.Height}"
+                -->
+            </controllers:SideMenu>
+        </Grid>
+    </ContentPage.Content>
 </ContentPage>

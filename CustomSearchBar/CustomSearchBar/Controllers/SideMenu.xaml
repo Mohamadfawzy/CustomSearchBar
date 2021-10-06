@@ -11,8 +11,7 @@
              BindingContext="{x:Reference this}"
              IsVisible="false"
              xmlns:icon="clr-namespace:CustomSearchBar.Fonts"
-             xmlns:rsc="clr-namespace:CustomSearchBar.Resources.Languages"
-             >
+             xmlns:rsc="clr-namespace:CustomSearchBar.Resources.Languages">
     <ContentView.Resources>
         <ResourceDictionary>
             <!-- -->
@@ -24,7 +23,7 @@
                         Value="Black" />
                 <Setter Property="HorizontalOptions"
                         Value="Center" />
-                
+
             </Style>
             <!-- box view -->
             <Style TargetType="BoxView">
@@ -47,7 +46,8 @@
               RowDefinitions="Auto"
               HorizontalOptions="FillAndExpand">
             <!-- Column 2 -->
-            <StackLayout x:Name="backgroundBhind" Grid.Column="0"
+            <StackLayout x:Name="backgroundBhind"
+                         Grid.Column="0"
                          Grid.ColumnSpan="2"
                          BackgroundColor="#90000000"
                          HorizontalOptions="FillAndExpand"
@@ -64,8 +64,7 @@
                          VerticalOptions="FillAndExpand"
                          HeightRequest="{Binding Source={Reference this}, Path=Height}"
                          InputTransparent="False"
-                         CascadeInputTransparent="True"
-                         >
+                         CascadeInputTransparent="True">
                 <frame:PancakeView x:Name="frameSM"
                                    Padding="0"
                                    Margin="0"
@@ -112,17 +111,17 @@
                                        TextColor="Black"
                                        FontSize="19"
                                        FontAttributes="Bold"
-                                       VerticalOptions="Start" 
-                                       HorizontalOptions="Start"/>
+                                       VerticalOptions="Start"
+                                       HorizontalOptions="Start" />
                                 <Label Text="MFawzyHelal@outlook.com"
                                        FontSize="15"
                                        TextColor="Gray"
                                        VerticalOptions="Start"
-                                       HorizontalOptions="Start"
-                                       />
+                                       HorizontalOptions="Start" />
                             </StackLayout>
 
-                            <BoxView Color="Gray" VerticalOptions="End"/>
+                            <BoxView Color="Gray"
+                                     VerticalOptions="End" />
                         </StackLayout>
                         <!-- Items -->
                         <ScrollView AbsoluteLayout.LayoutBounds="0,1,1,0.7"
@@ -141,8 +140,8 @@
                                                            ItemId="a">
                                 </controllers:SideMenuItems>
                                 <controllers:SideMenuItems Icon="{Binding Source={Reference this}, Path=ItemsIconsArray[1]}"
-                                                           Title="{Binding Source={Reference this}, Path=ItemsTitlesArray[1]}" 
-                                                           ItemId="b"/>
+                                                           Title="{Binding Source={Reference this}, Path=ItemsTitlesArray[1]}"
+                                                           ItemId="b" />
                                 <controllers:SideMenuItems Icon="{Binding Source={Reference this}, Path=ItemsIconsArray[2]}"
                                                            Title="{Binding Source={Reference this}, Path=ItemsTitlesArray[2]}"
                                                            ItemId="c" />
@@ -165,7 +164,7 @@
                                 <controllers:SideMenuItems Icon="{Binding Source={Reference this}, Path=ItemsIconsArray[8]}"
                                                            Title="{Binding Source={Reference this}, Path=ItemsTitlesArray[8]}"
                                                            ItemId="g">
-                                    <BoxView  />
+                                    <BoxView />
                                 </controllers:SideMenuItems>
                                 <controllers:SideMenuItems Icon="{Binding Source={Reference this}, Path=ItemsIconsArray[9]}"
                                                            Title="{Binding Source={Reference this}, Path=ItemsTitlesArray[9]}"
@@ -184,7 +183,8 @@
                     </AbsoluteLayout>
                 </frame:PancakeView>
                 <StackLayout.GestureRecognizers>
-                    <PanGestureRecognizer PanUpdated="OnPanUpdated" TouchPoints="0" />
+                    <PanGestureRecognizer PanUpdated="OnPanUpdated"
+                                          TouchPoints="0" />
                 </StackLayout.GestureRecognizers>
             </StackLayout>
         </Grid>
